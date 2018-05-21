@@ -16,6 +16,7 @@
 		20F78B8A20B25E4500BAF916 /* TODO_APP_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F78B8920B25E4500BAF916 /* TODO_APP_swiftTests.swift */; };
 		20F78B9520B25E4500BAF916 /* TODO_APP_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F78B9420B25E4500BAF916 /* TODO_APP_swiftUITests.swift */; };
 		20F78BE120B2662600BAF916 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F78BE020B2662600BAF916 /* TaskTableViewController.swift */; };
+		20F78BE520B26B7E00BAF916 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F78BE420B26B7E00BAF916 /* TaskTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		20F78B9420B25E4500BAF916 /* TODO_APP_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODO_APP_swiftUITests.swift; sourceTree = "<group>"; };
 		20F78B9620B25E4500BAF916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20F78BE020B2662600BAF916 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		20F78BE420B26B7E00BAF916 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				20F78B7620B25E4300BAF916 /* DetailViewController.swift */,
 				20F78B7820B25E4300BAF916 /* Main.storyboard */,
 				20F78BE020B2662600BAF916 /* TaskTableViewController.swift */,
+				20F78BE420B26B7E00BAF916 /* TaskTableViewCell.swift */,
 				20F78B7B20B25E4500BAF916 /* Assets.xcassets */,
 				20F78B7D20B25E4500BAF916 /* LaunchScreen.storyboard */,
 				20F78B8020B25E4500BAF916 /* Info.plist */,
@@ -264,6 +267,7 @@
 			files = (
 				20F78B7720B25E4300BAF916 /* DetailViewController.swift in Sources */,
 				20F78B7520B25E4300BAF916 /* MasterViewController.swift in Sources */,
+				20F78BE520B26B7E00BAF916 /* TaskTableViewCell.swift in Sources */,
 				20F78BE120B2662600BAF916 /* TaskTableViewController.swift in Sources */,
 				20F78B7320B25E4300BAF916 /* AppDelegate.swift in Sources */,
 			);
