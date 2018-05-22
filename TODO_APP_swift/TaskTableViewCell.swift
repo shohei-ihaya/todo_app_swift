@@ -12,7 +12,7 @@ class TaskTableViewCell: UITableViewCell {
 
     //MARK: Propeties
     @IBOutlet weak var taskTitle: UILabel!
-    @IBOutlet weak var taskLimit: UILabel!
+    @IBOutlet weak var taskLimit: NSDate!
 
     override func awakeFromNib() {
         super.awakeFromNib()

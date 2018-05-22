@@ -12,10 +12,10 @@ class Task {
     
     //MARK: Propeties
     var title: String
-    var limit: Date
+    var limit: NSDate?
    
     //MARK: Initialization
-    init?(title: String, limit: Date) {
+    init?(title: String, limit: NSDate?) {
         // title must not be empty
         guard !title.isEmpty else {
             return nil

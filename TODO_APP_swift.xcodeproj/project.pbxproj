@@ -105,10 +105,10 @@
 		20F78B7120B25E4300BAF916 /* TODO_APP_swift */ = {
 			isa = PBXGroup;
 			children = (
+				20F78B7820B25E4300BAF916 /* Main.storyboard */,
 				20F78B7220B25E4300BAF916 /* AppDelegate.swift */,
 				20F78B7420B25E4300BAF916 /* MasterViewController.swift */,
 				20F78B7620B25E4300BAF916 /* DetailViewController.swift */,
-				20F78B7820B25E4300BAF916 /* Main.storyboard */,
 				20F78BE620B2727900BAF916 /* Task.swift */,
 				20F78BE020B2662600BAF916 /* TaskTableViewController.swift */,
 				20F78BE420B26B7E00BAF916 /* TaskTableViewCell.swift */,
