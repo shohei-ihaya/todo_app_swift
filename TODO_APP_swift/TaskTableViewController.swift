@@ -47,8 +47,12 @@ class TaskTableViewController: UITableViewController {
 
         let task = tasks[indexPath.row]
 
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+
+
         cell.taskTitle.text = task.title
-        cell.taskLimit = task.limit
+        cell.taskLimit.text = dateFormatter.string(from: task.limit! as Date)
 
 
         return cell
@@ -101,7 +105,8 @@ class TaskTableViewController: UITableViewController {
     
     //MARK: Private Methods
     private func loadSampleTasks() {
-        guard let task = Task(title: "first", limit: nil) else {
+        let date: NSDate = NSDate()
+        guard let task = Task(title: "first", limit: date) else {
            fatalError("Instantize Task was failed")
         }
 
