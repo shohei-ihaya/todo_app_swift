@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2041137420B42000000F0CD7 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041137320B42000000F0CD7 /* TaskViewController.swift */; };
+		2048E31F20B446A30006E995 /* uiview_first_responder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048E31E20B446A30006E995 /* uiview_first_responder.swift */; };
 		20F78B7320B25E4300BAF916 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F78B7220B25E4300BAF916 /* AppDelegate.swift */; };
 		20F78B7520B25E4300BAF916 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F78B7420B25E4300BAF916 /* MasterViewController.swift */; };
 		20F78B7720B25E4300BAF916 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F78B7620B25E4300BAF916 /* DetailViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		2041137320B42000000F0CD7 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		2048E31E20B446A30006E995 /* uiview_first_responder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiview_first_responder.swift; sourceTree = "<group>"; };
 		20F78B6F20B25E4300BAF916 /* TODO_APP_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODO_APP_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F78B7220B25E4300BAF916 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20F78B7420B25E4300BAF916 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				20F78B7820B25E4300BAF916 /* Main.storyboard */,
+				2048E31E20B446A30006E995 /* uiview_first_responder.swift */,
 				20F78B7220B25E4300BAF916 /* AppDelegate.swift */,
 				20F78B7420B25E4300BAF916 /* MasterViewController.swift */,
 				20F78B7620B25E4300BAF916 /* DetailViewController.swift */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2048E31F20B446A30006E995 /* uiview_first_responder.swift in Sources */,
 				20F78B7720B25E4300BAF916 /* DetailViewController.swift in Sources */,
 				2041137420B42000000F0CD7 /* TaskViewController.swift in Sources */,
 				20F78B7520B25E4300BAF916 /* MasterViewController.swift in Sources */,
