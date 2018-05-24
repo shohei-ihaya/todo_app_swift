@@ -13,9 +13,13 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
     //MARK: Propeties
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var limitTextField: UITextField!
-
+    @IBOutlet weak var saveButton: UIButton!
+    
     var datePicker = UIDatePicker()
     var toolBar = UIToolbar()
+    let dateFormatter = DateFormatter()
+
+    var task: Task?
 
     @IBOutlet weak var datePickerContainerView: UIView!
 
@@ -26,10 +30,18 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         titleTextField.delegate = self
         limitTextField.delegate = self
 
+        // Prepare for task limit field
+        setupDateFormatter()
         setupDatePicker()
         setupUIToolBar()
         limitTextField.inputView = datePicker
         limitTextField.inputAccessoryView = toolBar
+
+        // If task is existed(will be edited), prepare values of it.
+        if let task = task {
+            titleTextField.text = task.title
+            limitTextField.text = dateFormatter.string(for: task.limit)
+        }
 
     }
 
@@ -39,52 +51,64 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
     }
 
     @objc func datePickerValueChanged(datePicker: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
         limitTextField.text = dateFormatter.string(from: datePicker.date)
     }
 
     //MARK: UIToolbar
     func setupUIToolBar() {
         toolBar = UIToolbar(frame: CGRect(x:0, y:0, width: view.frame.width, height: 40))
+        let clearButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(clearButtonPressed(sender:)))
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed(sender:)))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        toolBar.setItems([flexibleSpace, doneButton], animated: true)
+        toolBar.setItems([clearButton, flexibleSpace, doneButton], animated: true)
+    }
+
+    @objc func clearButtonPressed(sender: UIBarButtonItem) {
+        limitTextField.text = nil
+        limitTextField.resignFirstResponder()
     }
 
     @objc func doneButtonPressed(sender: UIBarButtonItem) {
         limitTextField.resignFirstResponder()
     }
 
+
     // MARK: - UITextFieldDelegate
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        switch textField {
-        case titleTextField:
-            print("title")
-        case limitTextField:
-            print("title")
-        default:
-            fatalError("Unexpected textField is edited. \(textField)")
-        }
         // Disable the Save button while editiong.
-        //saveButton.isEnabled = false
+        saveButton.isEnabled = false
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
         titleTextField.resignFirstResponder()
-        limitTextField.resignFirstResponder()
         return true
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //updateSaveButtonState()
-        //navigationItem.title = textField.text
+        let title = titleTextField.text ?? ""
+        saveButton.isEnabled = !title.isEmpty
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        guard let button = sender as? UIButton, button === saveButton else {
+            return
+        }
+
+        let title = titleTextField.text ?? ""
+        var limit: NSDate?
+        if let limitStr = limitTextField.text, !limitStr.isEmpty {
+            limit = dateFormatter.date(from: limitStr)! as NSDate
+        }
+
+        task = Task(title: title, limit: limit)
     }
     
 
@@ -97,5 +121,10 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+
+    //MARK: Private
+    private func setupDateFormatter() {
+      dateFormatter.dateStyle = .medium
+    }
 
 }
