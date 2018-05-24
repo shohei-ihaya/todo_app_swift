@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import os.log
 
 class TaskTableViewController: UITableViewController {
+
+    //MARK: Propeties
+    @IBOutlet weak var createTaskButton: UIButton!
+
 
     var tasks = [Task]()
 
@@ -22,6 +27,49 @@ class TaskTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        switch (segue.identifier ?? "") {
+        case "createTask":
+            os_log("New task is created.")
+        case "editTask":
+            guard let taskViewController = segue.destination as? TaskViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let selectedCell = sender as? UITableViewCell else {
+                fatalError("Unexpected sender \(String(describing: sender))")
+            }
+            guard let indexPath = tableView.indexPath(for: selectedCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            let selectedTask = tasks[indexPath.row]
+            taskViewController.task = selectedTask
+        default:
+            fatalError("Unexpected segue \(segue)")
+        }
+
+    }
+
+    @IBAction func unwindToTaskList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? TaskViewController, let task = sourceViewController.task {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tasks[selectedIndexPath.row] = task
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: tasks.count, section: 0)
+
+                tasks.append(task)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+
+    }
+
+    @IBAction func createNewTask(sender: UIButton) {
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,13 +95,15 @@ class TaskTableViewController: UITableViewController {
 
         let task = tasks[indexPath.row]
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-
-
         cell.taskTitle.text = task.title
-        cell.taskLimit.text = dateFormatter.string(from: task.limit! as Date)
 
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        if let limit = task.limit {
+            cell.taskLimit.text = dateFormatter.string(from: limit as Date)
+        } else {
+            cell.taskLimit.text = nil
+        }
 
         return cell
     }
