@@ -20,7 +20,10 @@ class TaskTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadSampleTasks()
+        if let savedTasks = loadTasks() {
+            tasks += savedTasks
+        }
+        //loadSampleTasks()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -64,8 +67,8 @@ class TaskTableViewController: UITableViewController {
                 tasks.append(task)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
+            saveTasks()
         }
-
     }
 
     @IBAction func createNewTask(sender: UIButton) {
@@ -161,5 +164,18 @@ class TaskTableViewController: UITableViewController {
         }
 
         tasks.append(task)
+    }
+
+    private func saveTasks() {
+       let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(tasks, toFile: Task.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Tasks successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save tasks", log: OSLog.default, type: .debug)
+        }
+    }
+
+    private func loadTasks() -> [Task]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Task.ArchiveURL.path) as? [Task]
     }
 }
