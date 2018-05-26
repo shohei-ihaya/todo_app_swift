@@ -12,10 +12,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Task Table View Controller-->
+        <!--Working Tasks-->
         <scene sceneID="gvd-NV-iL0">
             <objects>
-                <viewController id="pzH-5y-axN" customClass="TaskTableViewController" customModule="TODO_APP_swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Working Tasks" id="pzH-5y-axN" customClass="TaskTableViewController" customModule="TODO_APP_swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3YB-z3-i2n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -368,10 +368,10 @@
             </objects>
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
-        <!--Task Table View Controller-->
+        <!--Completed Tasks-->
         <scene sceneID="Me8-oY-2p9">
             <objects>
-                <viewController id="5JU-DE-2yi" customClass="TaskTableViewController" customModule="TODO_APP_swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Completed Tasks" id="5JU-DE-2yi" customClass="TaskTableViewController" customModule="TODO_APP_swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LMr-9L-Dml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
