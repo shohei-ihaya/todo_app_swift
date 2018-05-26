@@ -47,6 +47,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: datePicer
     func setupDatePicker() {
+        datePicker.datePickerMode = UIDatePickerMode.date
         datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
     }
 

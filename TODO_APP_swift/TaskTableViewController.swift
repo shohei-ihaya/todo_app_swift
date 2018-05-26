@@ -9,9 +9,10 @@
 import UIKit
 import os.log
 
-class TaskTableViewController: UITableViewController {
+class TaskTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //MARK: Propeties
+    @IBOutlet var tableView: UITableView!
     @IBOutlet weak var createTaskButton: UIButton!
 
 
@@ -24,6 +25,8 @@ class TaskTableViewController: UITableViewController {
             tasks += savedTasks
         }
         //loadSampleTasks()
+        tableView.delegate = self
+        tableView.dataSource = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -82,15 +85,15 @@ class TaskTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "TaskTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell else {
             fatalError("The dequeud cell is not an instance of TaskTableViewCell")
