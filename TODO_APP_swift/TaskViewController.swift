@@ -79,6 +79,11 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editiong.
         saveButton.isEnabled = false
+
+        // When date picker tapped, input its value into limitTextField.
+        if (textField === limitTextField) {
+          limitTextField.text = dateFormatter.string(from: datePicker.date)
+        }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
