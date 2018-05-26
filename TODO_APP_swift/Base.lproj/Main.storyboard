@@ -59,7 +59,7 @@
                         </prototypes>
                     </tableView>
                     <connections>
-                        <outlet property="createTaskButton" destination="8rK-jf-5xy" id="h7h-pk-ouo"/>
+                        <outlet property="createTaskButton" destination="OhF-1w-mbf" id="lbZ-as-dyX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ObG-89-vgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
