@@ -53,6 +53,10 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             let selectedTask = tasks[indexPath.row]
             taskViewController.task = selectedTask
+        case "Completed tasks":
+            os_log("completed tasks button is selected.")
+        case "Working tasks":
+            os_log("working tasks button is selected.")
         default:
             fatalError("Unexpected segue \(segue)")
         }

@@ -72,12 +72,20 @@
                                 <rect key="frame" x="0.0" y="579" width="375" height="43"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogx-Fq-baj">
-                                        <rect key="frame" x="16" y="-1" width="343" height="44"/>
+                                        <rect key="frame" x="264" y="-1" width="111" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Create task"/>
+                                        <state key="normal" title="Create tasks"/>
                                         <connections>
                                             <action selector="createNewTaskWithSender:" destination="pzH-5y-axN" eventType="touchUpInside" id="KAH-Bz-qoQ"/>
                                             <segue destination="90L-FT-dwg" kind="show" identifier="createTask" id="Q7l-hK-Szc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7R8-FU-vaw">
+                                        <rect key="frame" x="8" y="8" width="116" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Completed tasks"/>
+                                        <connections>
+                                            <segue destination="5JU-DE-2yi" kind="presentation" identifier="Completed tasks" id="BM6-Tk-HOd"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -359,6 +367,108 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-45" y="129"/>
+        </scene>
+        <!--Task Table View Controller-->
+        <scene sceneID="Me8-oY-2p9">
+            <objects>
+                <viewController id="5JU-DE-2yi" customClass="TaskTableViewController" customModule="TODO_APP_swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LMr-9L-Dml">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yd7-sx-JEK">
+                                <rect key="frame" x="0.0" y="41" width="375" height="538"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yd7-sx-JEK" secondAttribute="height" multiplier="375:538" id="Wuj-ZW-0o1"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskTableViewCell" rowHeight="80" id="EDQ-vZ-bED" customClass="TaskTableViewCell" customModule="TODO_APP_swift" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EDQ-vZ-bED" id="oBn-GL-yLl">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f75-IY-DSE">
+                                                    <rect key="frame" x="16" y="11" width="343" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Task Limit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFx-YS-PXD">
+                                                    <rect key="frame" x="16" y="51" width="343" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="ngK-BO-ZYt"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f75-IY-DSE" firstAttribute="top" secondItem="oBn-GL-yLl" secondAttribute="topMargin" constant="-20" id="HNE-jt-ZRG"/>
+                                                <constraint firstItem="f75-IY-DSE" firstAttribute="leading" secondItem="oBn-GL-yLl" secondAttribute="leadingMargin" id="Mxv-vD-0fo"/>
+                                                <constraint firstItem="MFx-YS-PXD" firstAttribute="top" secondItem="f75-IY-DSE" secondAttribute="bottom" constant="8" symbolic="YES" id="RjC-XL-uOg"/>
+                                                <constraint firstItem="f75-IY-DSE" firstAttribute="trailing" secondItem="MFx-YS-PXD" secondAttribute="trailing" id="UBc-Kk-2Fk"/>
+                                                <constraint firstItem="f75-IY-DSE" firstAttribute="trailing" secondItem="oBn-GL-yLl" secondAttribute="trailingMargin" id="a3c-ps-djQ"/>
+                                                <constraint firstItem="f75-IY-DSE" firstAttribute="leading" secondItem="MFx-YS-PXD" secondAttribute="leading" id="cFZ-VD-ZMw"/>
+                                                <constraint firstItem="MFx-YS-PXD" firstAttribute="bottom" secondItem="oBn-GL-yLl" secondAttribute="bottomMargin" id="r93-a2-yBp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskLimit" destination="MFx-YS-PXD" id="PRQ-56-HuD"/>
+                                            <outlet property="taskTitle" destination="f75-IY-DSE" id="t23-o6-Pvr"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2s-1i-RfU">
+                                <rect key="frame" x="0.0" y="579" width="375" height="43"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WdY-01-fq1">
+                                        <rect key="frame" x="264" y="-1" width="111" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Create tasks"/>
+                                        <connections>
+                                            <action selector="createNewTaskWithSender:" destination="5JU-DE-2yi" eventType="touchUpInside" id="cvp-Ct-UI1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Og6-Yf-seq">
+                                        <rect key="frame" x="18" y="8" width="97" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Working tasks"/>
+                                        <connections>
+                                            <segue destination="pzH-5y-axN" kind="popoverPresentation" identifier="Working tasks" popoverAnchorView="Og6-Yf-seq" id="ljl-Rd-rlf">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yd7-sx-JEK" firstAttribute="trailing" secondItem="T2s-1i-RfU" secondAttribute="trailing" id="2aT-mH-qVd"/>
+                            <constraint firstItem="yd7-sx-JEK" firstAttribute="leading" secondItem="LMr-9L-Dml" secondAttribute="leading" id="2s8-h4-YQq"/>
+                            <constraint firstItem="N0G-Zx-AEf" firstAttribute="bottom" secondItem="T2s-1i-RfU" secondAttribute="bottom" constant="1" id="34F-Pi-N8s"/>
+                            <constraint firstAttribute="trailing" secondItem="yd7-sx-JEK" secondAttribute="trailing" id="BZL-hF-Bs8"/>
+                            <constraint firstItem="yd7-sx-JEK" firstAttribute="top" secondItem="N0G-Zx-AEf" secondAttribute="top" constant="21" id="Sgx-MY-JGn"/>
+                            <constraint firstItem="yd7-sx-JEK" firstAttribute="leading" secondItem="T2s-1i-RfU" secondAttribute="leading" id="d6m-We-fjO"/>
+                            <constraint firstItem="T2s-1i-RfU" firstAttribute="top" secondItem="yd7-sx-JEK" secondAttribute="bottom" id="l8q-Qu-a9m"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="N0G-Zx-AEf"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="yd7-sx-JEK" id="8mv-UO-VDG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GOO-Kl-aAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="526" y="-2896"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
