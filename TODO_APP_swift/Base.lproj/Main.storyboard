@@ -79,9 +79,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dds-bL-yJN">
                                 <rect key="frame" x="0.0" y="579" width="375" height="43"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogx-Fq-baj">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogx-Fq-baj">
                                         <rect key="frame" x="323" y="-1" width="44" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ogx-Fq-baj" secondAttribute="height" multiplier="1:1" id="b1q-39-1oE"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
                                         <state key="normal" title=""/>
                                         <connections>
@@ -89,21 +91,33 @@
                                             <segue destination="90L-FT-dwg" kind="show" identifier="createTask" id="Q7l-hK-Szc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7R8-FU-vaw">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7R8-FU-vaw">
                                         <rect key="frame" x="8" y="0.0" width="43" height="43"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="43" id="t2D-qt-TEi"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="FontAwesome5FreeRegular" family="Font Awesome 5 Free" pointSize="40"/>
                                         <state key="normal" title=""/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJk-cs-Tuf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJk-cs-Tuf">
                                         <rect key="frame" x="89" y="6" width="197" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ogx-Fq-baj" firstAttribute="centerY" secondItem="7R8-FU-vaw" secondAttribute="centerY" id="0Zr-qx-qtK"/>
+                                    <constraint firstItem="ogx-Fq-baj" firstAttribute="leading" secondItem="zJk-cs-Tuf" secondAttribute="trailing" constant="37" id="2Ae-iO-Nks"/>
+                                    <constraint firstItem="ogx-Fq-baj" firstAttribute="trailing" secondItem="dds-bL-yJN" secondAttribute="trailingMargin" id="2WF-2k-W32"/>
+                                    <constraint firstItem="ogx-Fq-baj" firstAttribute="centerY" secondItem="zJk-cs-Tuf" secondAttribute="centerY" id="4lg-3g-km0"/>
+                                    <constraint firstItem="zJk-cs-Tuf" firstAttribute="leading" secondItem="7R8-FU-vaw" secondAttribute="trailing" constant="38" id="PJY-fq-JFA"/>
+                                    <constraint firstItem="ogx-Fq-baj" firstAttribute="centerY" secondItem="dds-bL-yJN" secondAttribute="centerY" id="QXG-i5-x4K"/>
+                                    <constraint firstItem="ogx-Fq-baj" firstAttribute="bottom" secondItem="7R8-FU-vaw" secondAttribute="bottom" id="aL6-8y-GNX"/>
+                                    <constraint firstItem="7R8-FU-vaw" firstAttribute="leading" secondItem="dds-bL-yJN" secondAttribute="leadingMargin" id="cav-Ab-ooc"/>
+                                    <constraint firstAttribute="bottom" secondItem="ogx-Fq-baj" secondAttribute="bottom" id="nnG-bf-xBd"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
