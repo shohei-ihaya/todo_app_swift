@@ -52,9 +52,7 @@ class Task: NSObject, NSCoding {
 
         let limit = aDecoder.decodeObject(forKey: PropertyKey.limit) as? NSDate
 
-        guard let completed = aDecoder.decodeObject(forKey: PropertyKey.completed) as? Bool else {
-            return nil
-        }
+        let completed = aDecoder.decodeBool(forKey: PropertyKey.completed)
 
         self.init(title: title, limit: limit, completed: completed)
     }
