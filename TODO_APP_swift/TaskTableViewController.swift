@@ -15,7 +15,8 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var createTaskButton: UIButton!
     @IBOutlet weak var showTaskButton: UIButton!
-
+    @IBOutlet weak var taskCategoryLabel: UILabel!
+    
     var tasks = [Task]()
     var tasksForTable = [Task]()
 
@@ -32,6 +33,9 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
 
         // setup showTaskButton
         setupShowTaskButton()
+
+        // setup task category label
+        taskCategoryLabel.text = "Working"
 
         // setup uncompleted tasks for table view
         tasksForTable = tasks.filter { $0.completed == false}
@@ -120,12 +124,14 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let unCompletedTasks = tasks.filter { $0.completed == false}
         tasksForTable = unCompletedTasks
         tableView.reloadData()
+        taskCategoryLabel.text = "Working"
     }
 
     func showCompletedTasks() {
         let CompletedTasks = tasks.filter { $0.completed == true}
         tasksForTable = CompletedTasks
         tableView.reloadData()
+        taskCategoryLabel.text = "Completed"
     }
 
     @IBAction func createNewTask(sender: UIButton) {

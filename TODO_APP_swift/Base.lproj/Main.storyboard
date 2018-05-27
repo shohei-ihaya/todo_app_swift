@@ -95,6 +95,13 @@
                                         <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
                                         <state key="normal" title=""/>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJk-cs-Tuf">
+                                        <rect key="frame" x="89" y="6" width="197" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -114,8 +121,10 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="TaskCategoryLabel" destination="zJk-cs-Tuf" id="ezc-um-B5a"/>
                         <outlet property="showTaskButton" destination="7R8-FU-vaw" id="e9M-Ks-cH5"/>
                         <outlet property="tableView" destination="1Pr-Yp-MK7" id="gkj-Ad-UHq"/>
+                        <outlet property="taskCategoryLabel" destination="zJk-cs-Tuf" id="CiB-gU-tKb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cu7-ae-zdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
