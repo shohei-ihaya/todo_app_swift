@@ -11,6 +11,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="fa-regular-400.ttf">
+            <string>FontAwesome5FreeRegular</string>
+        </array>
+        <array key="fontawesome-webfont.ttf">
+            <string>FontAwesome</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Task Table View Controller-->
         <scene sceneID="gvd-NV-iL0">
@@ -34,13 +42,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqC-pD-HfE">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqC-pD-HfE">
                                                     <rect key="frame" x="16" y="11" width="343" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Task Limit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrs-yR-MJD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Limit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrs-yR-MJD">
                                                     <rect key="frame" x="16" y="51" width="343" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="HvL-fH-Q93"/>
@@ -53,11 +61,11 @@
                                             <constraints>
                                                 <constraint firstItem="MqC-pD-HfE" firstAttribute="leading" secondItem="qrs-yR-MJD" secondAttribute="leading" id="42W-kY-hJd"/>
                                                 <constraint firstItem="MqC-pD-HfE" firstAttribute="trailing" secondItem="qrs-yR-MJD" secondAttribute="trailing" id="6mG-E9-yyA"/>
-                                                <constraint firstItem="MqC-pD-HfE" firstAttribute="trailing" secondItem="r4e-XO-fc0" secondAttribute="trailingMargin" id="CLQ-lL-ZZJ"/>
+                                                <constraint firstItem="MqC-pD-HfE" firstAttribute="trailing" secondItem="r4e-XO-fc0" secondAttribute="trailingMargin" constant="-1" id="CLQ-lL-ZZJ"/>
                                                 <constraint firstItem="qrs-yR-MJD" firstAttribute="bottom" secondItem="r4e-XO-fc0" secondAttribute="bottomMargin" id="Cxo-qR-nx8"/>
                                                 <constraint firstItem="qrs-yR-MJD" firstAttribute="top" secondItem="MqC-pD-HfE" secondAttribute="bottom" constant="8" symbolic="YES" id="SQh-rw-n1g"/>
-                                                <constraint firstItem="MqC-pD-HfE" firstAttribute="leading" secondItem="r4e-XO-fc0" secondAttribute="leadingMargin" id="WOl-aU-KL1"/>
-                                                <constraint firstItem="MqC-pD-HfE" firstAttribute="top" secondItem="r4e-XO-fc0" secondAttribute="topMargin" constant="-20" id="puY-AV-2hO"/>
+                                                <constraint firstItem="MqC-pD-HfE" firstAttribute="leading" secondItem="r4e-XO-fc0" secondAttribute="leadingMargin" constant="1" id="WOl-aU-KL1"/>
+                                                <constraint firstItem="MqC-pD-HfE" firstAttribute="top" secondItem="r4e-XO-fc0" secondAttribute="topMargin" id="puY-AV-2hO"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -72,14 +80,28 @@
                                 <rect key="frame" x="0.0" y="579" width="375" height="43"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogx-Fq-baj">
-                                        <rect key="frame" x="16" y="-1" width="343" height="44"/>
+                                        <rect key="frame" x="323" y="-1" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Create task"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
+                                        <state key="normal" title=""/>
                                         <connections>
                                             <action selector="createNewTaskWithSender:" destination="pzH-5y-axN" eventType="touchUpInside" id="KAH-Bz-qoQ"/>
                                             <segue destination="90L-FT-dwg" kind="show" identifier="createTask" id="Q7l-hK-Szc"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7R8-FU-vaw">
+                                        <rect key="frame" x="8" y="0.0" width="43" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome5FreeRegular" family="Font Awesome 5 Free" pointSize="40"/>
+                                        <state key="normal" title=""/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJk-cs-Tuf">
+                                        <rect key="frame" x="89" y="6" width="197" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -99,7 +121,10 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="TaskCategoryLabel" destination="zJk-cs-Tuf" id="ezc-um-B5a"/>
+                        <outlet property="showTaskButton" destination="7R8-FU-vaw" id="e9M-Ks-cH5"/>
                         <outlet property="tableView" destination="1Pr-Yp-MK7" id="gkj-Ad-UHq"/>
+                        <outlet property="taskCategoryLabel" destination="zJk-cs-Tuf" id="CiB-gU-tKb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cu7-ae-zdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -180,7 +205,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Task Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2jh-99-mT1">
-                                <rect key="frame" x="16" y="85" width="343" height="46"/>
+                                <rect key="frame" x="72" y="85" width="287" height="46"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -208,25 +233,40 @@
                                     <segue destination="ZNy-dT-N1V" kind="unwind" unwindAction="unwindToTaskListWithSender:" id="L0S-4y-0PR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-UH-EFu">
+                                <rect key="frame" x="16" y="77" width="50" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dh7-UH-EFu" secondAttribute="height" multiplier="25:31" id="PYQ-8A-gsk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="FontAwesome5FreeRegular" family="Font Awesome 5 Free" pointSize="50"/>
+                                <state key="normal" title="">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2jh-99-mT1" firstAttribute="trailing" secondItem="Mlz-Kz-RLE" secondAttribute="trailingMargin" id="48F-S9-DkM"/>
                             <constraint firstItem="S9c-9S-eR0" firstAttribute="leading" secondItem="exh-2n-WlV" secondAttribute="leading" constant="15" id="5jh-hI-3fK"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="S9c-9S-eR0" secondAttribute="trailing" constant="20" symbolic="YES" id="8qm-FQ-38J"/>
                             <constraint firstItem="2jh-99-mT1" firstAttribute="top" secondItem="Gyy-Cg-N4z" secondAttribute="bottom" constant="19" id="FYM-jK-Rr2"/>
+                            <constraint firstItem="dh7-UH-EFu" firstAttribute="centerY" secondItem="2jh-99-mT1" secondAttribute="centerY" id="Gjd-H5-uId"/>
                             <constraint firstItem="Gyy-Cg-N4z" firstAttribute="top" secondItem="exh-2n-WlV" secondAttribute="top" constant="16" id="KlH-4R-NKJ"/>
                             <constraint firstItem="exh-2n-WlV" firstAttribute="trailing" secondItem="Gyy-Cg-N4z" secondAttribute="trailing" constant="22" id="Lez-Da-SH8"/>
                             <constraint firstItem="GJm-DK-Cqn" firstAttribute="centerY" secondItem="ayK-RF-ikE" secondAttribute="centerY" id="Obg-DU-6b4"/>
                             <constraint firstItem="2jh-99-mT1" firstAttribute="trailing" secondItem="ayK-RF-ikE" secondAttribute="trailing" id="T01-E9-OBQ"/>
-                            <constraint firstItem="2jh-99-mT1" firstAttribute="leading" secondItem="Mlz-Kz-RLE" secondAttribute="leadingMargin" id="evX-FY-Ogo"/>
+                            <constraint firstItem="dh7-UH-EFu" firstAttribute="leading" secondItem="GJm-DK-Cqn" secondAttribute="leading" id="Twx-5f-IPv"/>
+                            <constraint firstItem="Gyy-Cg-N4z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mlz-Kz-RLE" secondAttribute="leading" constant="20" symbolic="YES" id="aP4-Bh-fNy"/>
+                            <constraint firstItem="2jh-99-mT1" firstAttribute="leading" secondItem="Mlz-Kz-RLE" secondAttribute="leadingMargin" constant="56" id="evX-FY-Ogo"/>
                             <constraint firstItem="ayK-RF-ikE" firstAttribute="leading" secondItem="GJm-DK-Cqn" secondAttribute="trailing" constant="36" id="guc-nK-MOi"/>
-                            <constraint firstItem="2jh-99-mT1" firstAttribute="leading" secondItem="GJm-DK-Cqn" secondAttribute="leading" id="oLj-GX-ewd"/>
+                            <constraint firstItem="2jh-99-mT1" firstAttribute="leading" secondItem="GJm-DK-Cqn" secondAttribute="leading" constant="56" id="oLj-GX-ewd"/>
                             <constraint firstItem="ayK-RF-ikE" firstAttribute="top" secondItem="2jh-99-mT1" secondAttribute="bottom" constant="63" id="vRV-14-fkY"/>
                             <constraint firstItem="Gyy-Cg-N4z" firstAttribute="baseline" secondItem="S9c-9S-eR0" secondAttribute="baseline" id="zNQ-mx-QPx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="exh-2n-WlV"/>
                     </view>
                     <connections>
+                        <outlet property="completeButton" destination="dh7-UH-EFu" id="a1H-Ju-0Fw"/>
                         <outlet property="limitTextField" destination="ayK-RF-ikE" id="Ppe-ZN-QPJ"/>
                         <outlet property="saveButton" destination="Gyy-Cg-N4z" id="DFg-1B-MPn"/>
                         <outlet property="titleTextField" destination="2jh-99-mT1" id="4VW-h3-KPm"/>
@@ -235,7 +275,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mF0-S6-rbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ZNy-dT-N1V" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1887" y="-2039"/>
+            <point key="canvasLocation" x="1885.5999999999999" y="-2039.7301349325339"/>
         </scene>
         <!--Master-->
         <scene sceneID="pY4-Hu-kfo">

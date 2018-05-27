@@ -14,9 +14,12 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK: Propeties
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var createTaskButton: UIButton!
-
-
+    @IBOutlet weak var showTaskButton: UIButton!
+    @IBOutlet weak var taskCategoryLabel: UILabel!
+    
     var tasks = [Task]()
+    var tasksForTable = [Task]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,16 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
         //loadSampleTasks()
         tableView.delegate = self
         tableView.dataSource = self
+
+        // setup showTaskButton
+        setupShowTaskButton()
+
+        // setup task category label
+        taskCategoryLabel.text = "Working"
+
+        // setup uncompleted tasks for table view
+        tasksForTable = tasks.filter { $0.completed == false}
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -51,8 +64,12 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
             guard let indexPath = tableView.indexPath(for: selectedCell) else {
                 fatalError("The selected cell is not being displayed by the table")
             }
-            let selectedTask = tasks[indexPath.row]
+            let selectedTask = tasksForTable[indexPath.row]
             taskViewController.task = selectedTask
+        case "Completed tasks":
+            os_log("completed tasks button is selected.")
+        case "Working tasks":
+            os_log("working tasks button is selected.")
         default:
             fatalError("Unexpected segue \(segue)")
         }
@@ -62,16 +79,59 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func unwindToTaskList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? TaskViewController, let task = sourceViewController.task {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                tasks[selectedIndexPath.row] = task
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
-            } else {
-                let newIndexPath = IndexPath(row: tasks.count, section: 0)
 
+                let taskBeforeEdit = tasksForTable[selectedIndexPath.row]
+                if let index = tasks.index(of: taskBeforeEdit) {
+                    tasks[index] = task
+                }
+                tasksForTable[selectedIndexPath.row] = task
+
+                if taskBeforeEdit.completed == task.completed {
+                  tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                } else if task.completed {
+                    showCompletedTasks()
+                } else {
+                    showUnCompletedTasks()
+                }
+            } else {
+                tasksForTable.append(task)
                 tasks.append(task)
-                tableView.insertRows(at: [newIndexPath], with: .automatic)
+                if task.completed {
+                    showCompletedTasks()
+                } else {
+                    showUnCompletedTasks()
+                }
             }
             saveTasks()
         }
+    }
+
+    func setupShowTaskButton() {
+        showTaskButton.addTarget(self, action: #selector(showTaskButtonPressed(sender:)), for: .touchUpInside)
+    }
+
+    @objc func showTaskButtonPressed(sender: UIButton) {
+        if showTaskButton.titleLabel?.font == UIFont(name: "FontAwesome", size: 40) {
+            showTaskButton.titleLabel?.font = UIFont(name: "Font Awesome 5 free", size: 40)
+            showUnCompletedTasks()
+        } else {
+            showTaskButton.titleLabel?.font = UIFont(name: "FontAwesome", size: 40)
+            showCompletedTasks()
+        }
+    }
+
+    func showUnCompletedTasks() {
+        let unCompletedTasks = tasks.filter { $0.completed == false}
+        tasksForTable = unCompletedTasks
+        tableView.reloadData()
+        taskCategoryLabel.text = "Working"
+    }
+
+    func showCompletedTasks() {
+        let CompletedTasks = tasks.filter { $0.completed == true}
+        tasksForTable = CompletedTasks
+        tableView.reloadData()
+        taskCategoryLabel.text = "Completed"
     }
 
     @IBAction func createNewTask(sender: UIButton) {
@@ -90,7 +150,7 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        return tasksForTable.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,7 +159,7 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
             fatalError("The dequeud cell is not an instance of TaskTableViewCell")
         }
 
-        let task = tasks[indexPath.row]
+        let task = tasksForTable[indexPath.row]
 
         cell.taskTitle.text = task.title
 
@@ -126,7 +186,10 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tasks.remove(at: indexPath.row)
+            if let index = tasks.index(of: tasksForTable[indexPath.row]) {
+                tasks.remove(at: index)
+            }
+            tasksForTable.remove(at: indexPath.row)
             saveTasks()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -160,14 +223,16 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     */
     
     //MARK: Private Methods
+    /*
     private func loadSampleTasks() {
         let date: NSDate = NSDate()
-        guard let task = Task(title: "first", limit: date) else {
+        guard let task = Task(title: "first", limit: date, completed: true) else {
            fatalError("Instantize Task was failed")
         }
 
         tasks.append(task)
     }
+ */
 
     private func saveTasks() {
        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(tasks, toFile: Task.ArchiveURL.path)

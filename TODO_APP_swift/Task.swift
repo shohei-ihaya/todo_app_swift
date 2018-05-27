@@ -12,6 +12,7 @@ class Task: NSObject, NSCoding {
     //MARK: Propeties
     var title: String
     var limit: NSDate?
+    var completed: Bool
 
     //MARK: Archiving path
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -21,10 +22,11 @@ class Task: NSObject, NSCoding {
     struct PropertyKey {
         static let title = "title"
         static let limit = "limit"
+        static let completed = "completed"
     }
 
     //MARK: Initialization
-    init?(title: String, limit: NSDate?) {
+    init?(title: String, limit: NSDate?, completed: Bool) {
         // title must not be empty
         guard !title.isEmpty else {
             return nil
@@ -33,12 +35,14 @@ class Task: NSObject, NSCoding {
         // Initialize propeties
         self.title = title
         self.limit = limit
+        self.completed = completed
     }
 
     //MARK: NSCoding
     func encode(with aCoder: NSCoder) {
         aCoder.encode(title, forKey: PropertyKey.title)
         aCoder.encode(limit, forKey: PropertyKey.limit)
+        aCoder.encode(completed, forKey: PropertyKey.completed)
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
@@ -48,6 +52,8 @@ class Task: NSObject, NSCoding {
 
         let limit = aDecoder.decodeObject(forKey: PropertyKey.limit) as? NSDate
 
-        self.init(title: title, limit: limit)
+        let completed = aDecoder.decodeBool(forKey: PropertyKey.completed)
+
+        self.init(title: title, limit: limit, completed: completed)
     }
 }

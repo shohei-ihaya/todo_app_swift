@@ -14,7 +14,8 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var limitTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
-    
+    @IBOutlet weak var completeButton: UIButton!
+
     var datePicker = UIDatePicker()
     var toolBar = UIToolbar()
     let dateFormatter = DateFormatter()
@@ -37,11 +38,14 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         limitTextField.inputView = datePicker
         limitTextField.inputAccessoryView = toolBar
 
+
         // If task is existed(will be edited), prepare values of it.
         if let task = task {
             titleTextField.text = task.title
             limitTextField.text = dateFormatter.string(for: task.limit)
         }
+        // Prepare complete button
+        setupCompleteButton()
 
     }
 
@@ -73,6 +77,31 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         limitTextField.resignFirstResponder()
     }
 
+    //MARK: complete button
+    func setupCompleteButton() {
+        completeButton.addTarget(self, action: #selector(completeButtonPressed(sender:)), for: .touchUpInside)
+        if task?.completed ?? false {
+            setCompleteButtonToComplete()
+        }
+    }
+
+    @objc func completeButtonPressed(sender: UIButton) {
+        if completeButton.titleLabel?.font == UIFont(name: "FontAwesome", size: 50) {
+            setCompleteButtonToUnComplete()
+        } else {
+            setCompleteButtonToComplete()
+        }
+    }
+
+    func setCompleteButtonToComplete() {
+        completeButton.titleLabel?.font = UIFont(name: "FontAwesome", size: 50)
+        completeButton.setTitleColor(UIColor.green, for: UIControlState.normal)
+    }
+
+    func setCompleteButtonToUnComplete() {
+        completeButton.titleLabel?.font = UIFont(name: "Font Awesome 5 free", size: 50)
+        completeButton.setTitleColor(UIColor.gray, for: UIControlState.normal)
+    }
 
     // MARK: - UITextFieldDelegate
 
@@ -113,8 +142,14 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         if let limitStr = limitTextField.text, !limitStr.isEmpty {
             limit = dateFormatter.date(from: limitStr)! as NSDate
         }
+        let completed: Bool
+        if completeButton.titleLabel?.font == UIFont(name: "FontAwesome", size: 50) {
+            completed = true
+        } else {
+            completed = false
+        }
 
-        task = Task(title: title, limit: limit)
+        task = Task(title: title, limit: limit, completed: completed)
     }
     
 
