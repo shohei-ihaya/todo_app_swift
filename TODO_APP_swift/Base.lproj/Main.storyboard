@@ -82,7 +82,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogx-Fq-baj">
                                         <rect key="frame" x="323" y="-1" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
                                         <state key="normal" title=""/>
                                         <connections>
                                             <action selector="createNewTaskWithSender:" destination="pzH-5y-axN" eventType="touchUpInside" id="KAH-Bz-qoQ"/>
@@ -92,7 +92,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7R8-FU-vaw">
                                         <rect key="frame" x="8" y="0.0" width="43" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="30"/>
+                                        <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
                                         <state key="normal" title=""/>
                                     </button>
                                 </subviews>

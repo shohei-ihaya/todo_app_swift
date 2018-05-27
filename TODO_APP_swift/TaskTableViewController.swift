@@ -109,11 +109,11 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     @objc func showTaskButtonPressed(sender: UIButton) {
-        if showTaskButton.titleLabel?.font == UIFont(name: "FontAwesome", size: 30) {
-            showTaskButton.titleLabel?.font = UIFont(name: "Font Awesome 5 free", size: 30)
+        if showTaskButton.titleLabel?.font == UIFont(name: "FontAwesome", size: 40) {
+            showTaskButton.titleLabel?.font = UIFont(name: "Font Awesome 5 free", size: 40)
             showUnCompletedTasks()
         } else {
-            showTaskButton.titleLabel?.font = UIFont(name: "FontAwesome", size: 30)
+            showTaskButton.titleLabel?.font = UIFont(name: "FontAwesome", size: 40)
             showCompletedTasks()
         }
     }
