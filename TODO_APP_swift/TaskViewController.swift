@@ -8,13 +8,15 @@
 
 import UIKit
 
-class TaskViewController: UIViewController, UITextFieldDelegate {
+class TaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     //MARK: Propeties
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var limitTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var taskDescriptionTextView: UITextView!
+    @IBOutlet weak var taskDescriptionTextViewPlaceholder: UILabel!
 
     var datePicker = UIDatePicker()
     var toolBar = UIToolbar()
@@ -30,6 +32,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         titleTextField.delegate = self
         limitTextField.delegate = self
+        taskDescriptionTextView.delegate = self
 
         // Prepare for task limit field
         setupDateFormatter()
@@ -123,6 +126,17 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         let title = titleTextField.text ?? ""
         saveButton.isEnabled = !title.isEmpty
+    }
+
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        taskDescriptionTextViewPlaceholder.isHidden = true
+        return true
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if taskDescriptionTextView.text.isEmpty {
+            taskDescriptionTextViewPlaceholder.isHidden = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
