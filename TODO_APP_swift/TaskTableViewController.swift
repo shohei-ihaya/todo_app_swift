@@ -90,8 +90,6 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
                     showUnCompletedTasks()
                 }
             } else {
-                let newIndexPath = IndexPath(row: tasksForTable.count, section: 0)
-
                 tasksForTable.append(task)
                 tasks.append(task)
                 if task.completed {
