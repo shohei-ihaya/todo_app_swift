@@ -143,6 +143,12 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         }
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if taskDescriptionTextView.isFirstResponder {
+            taskDescriptionTextView.resignFirstResponder()
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
