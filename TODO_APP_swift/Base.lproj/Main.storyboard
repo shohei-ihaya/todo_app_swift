@@ -11,6 +11,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="fa-regular-400.ttf">
+            <string>FontAwesome5FreeRegular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Working Tasks-->
         <scene sceneID="gvd-NV-iL0">
@@ -188,7 +193,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Task Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2jh-99-mT1">
-                                <rect key="frame" x="16" y="85" width="343" height="46"/>
+                                <rect key="frame" x="72" y="85" width="287" height="46"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -216,25 +221,40 @@
                                     <segue destination="ZNy-dT-N1V" kind="unwind" unwindAction="unwindToTaskListWithSender:" id="L0S-4y-0PR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dh7-UH-EFu">
+                                <rect key="frame" x="16" y="77" width="50" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dh7-UH-EFu" secondAttribute="height" multiplier="25:31" id="PYQ-8A-gsk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="FontAwesome5FreeRegular" family="Font Awesome 5 Free" pointSize="50"/>
+                                <state key="normal" title="">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2jh-99-mT1" firstAttribute="trailing" secondItem="Mlz-Kz-RLE" secondAttribute="trailingMargin" id="48F-S9-DkM"/>
                             <constraint firstItem="S9c-9S-eR0" firstAttribute="leading" secondItem="exh-2n-WlV" secondAttribute="leading" constant="15" id="5jh-hI-3fK"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="S9c-9S-eR0" secondAttribute="trailing" constant="20" symbolic="YES" id="8qm-FQ-38J"/>
                             <constraint firstItem="2jh-99-mT1" firstAttribute="top" secondItem="Gyy-Cg-N4z" secondAttribute="bottom" constant="19" id="FYM-jK-Rr2"/>
+                            <constraint firstItem="dh7-UH-EFu" firstAttribute="centerY" secondItem="2jh-99-mT1" secondAttribute="centerY" id="Gjd-H5-uId"/>
                             <constraint firstItem="Gyy-Cg-N4z" firstAttribute="top" secondItem="exh-2n-WlV" secondAttribute="top" constant="16" id="KlH-4R-NKJ"/>
                             <constraint firstItem="exh-2n-WlV" firstAttribute="trailing" secondItem="Gyy-Cg-N4z" secondAttribute="trailing" constant="22" id="Lez-Da-SH8"/>
                             <constraint firstItem="GJm-DK-Cqn" firstAttribute="centerY" secondItem="ayK-RF-ikE" secondAttribute="centerY" id="Obg-DU-6b4"/>
                             <constraint firstItem="2jh-99-mT1" firstAttribute="trailing" secondItem="ayK-RF-ikE" secondAttribute="trailing" id="T01-E9-OBQ"/>
-                            <constraint firstItem="2jh-99-mT1" firstAttribute="leading" secondItem="Mlz-Kz-RLE" secondAttribute="leadingMargin" id="evX-FY-Ogo"/>
+                            <constraint firstItem="dh7-UH-EFu" firstAttribute="leading" secondItem="GJm-DK-Cqn" secondAttribute="leading" id="Twx-5f-IPv"/>
+                            <constraint firstItem="Gyy-Cg-N4z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mlz-Kz-RLE" secondAttribute="leading" constant="20" symbolic="YES" id="aP4-Bh-fNy"/>
+                            <constraint firstItem="2jh-99-mT1" firstAttribute="leading" secondItem="Mlz-Kz-RLE" secondAttribute="leadingMargin" constant="56" id="evX-FY-Ogo"/>
                             <constraint firstItem="ayK-RF-ikE" firstAttribute="leading" secondItem="GJm-DK-Cqn" secondAttribute="trailing" constant="36" id="guc-nK-MOi"/>
-                            <constraint firstItem="2jh-99-mT1" firstAttribute="leading" secondItem="GJm-DK-Cqn" secondAttribute="leading" id="oLj-GX-ewd"/>
+                            <constraint firstItem="2jh-99-mT1" firstAttribute="leading" secondItem="GJm-DK-Cqn" secondAttribute="leading" constant="56" id="oLj-GX-ewd"/>
                             <constraint firstItem="ayK-RF-ikE" firstAttribute="top" secondItem="2jh-99-mT1" secondAttribute="bottom" constant="63" id="vRV-14-fkY"/>
                             <constraint firstItem="Gyy-Cg-N4z" firstAttribute="baseline" secondItem="S9c-9S-eR0" secondAttribute="baseline" id="zNQ-mx-QPx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="exh-2n-WlV"/>
                     </view>
                     <connections>
+                        <outlet property="completeButton" destination="dh7-UH-EFu" id="a1H-Ju-0Fw"/>
                         <outlet property="limitTextField" destination="ayK-RF-ikE" id="Ppe-ZN-QPJ"/>
                         <outlet property="saveButton" destination="Gyy-Cg-N4z" id="DFg-1B-MPn"/>
                         <outlet property="titleTextField" destination="2jh-99-mT1" id="4VW-h3-KPm"/>
@@ -243,7 +263,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mF0-S6-rbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ZNy-dT-N1V" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1887" y="-2039"/>
+            <point key="canvasLocation" x="1885.5999999999999" y="-2039.7301349325339"/>
         </scene>
         <!--Master-->
         <scene sceneID="pY4-Hu-kfo">

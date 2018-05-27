@@ -166,7 +166,7 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK: Private Methods
     private func loadSampleTasks() {
         let date: NSDate = NSDate()
-        guard let task = Task(title: "first", limit: date) else {
+        guard let task = Task(title: "first", limit: date, completed: true) else {
            fatalError("Instantize Task was failed")
         }
 
