@@ -124,6 +124,7 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let unCompletedTasks = tasks.filter { $0.completed == false}
         tasksForTable = unCompletedTasks
         tableView.reloadData()
+        showTaskButton.titleLabel?.font = UIFont(name: "Font Awesome 5 free", size: 40)
         taskCategoryLabel.text = "Working"
     }
 
@@ -131,6 +132,7 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let CompletedTasks = tasks.filter { $0.completed == true}
         tasksForTable = CompletedTasks
         tableView.reloadData()
+        showTaskButton.titleLabel?.font = UIFont(name: "FontAwesome", size: 40)
         taskCategoryLabel.text = "Completed"
     }
 
