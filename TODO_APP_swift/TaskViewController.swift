@@ -46,6 +46,10 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         if let task = task {
             titleTextField.text = task.title
             limitTextField.text = dateFormatter.string(for: task.limit)
+            if let detailDescription = task.detailDescription {
+                taskDescriptionTextViewPlaceholder.isHidden = true
+                taskDescriptionTextView.text = detailDescription
+            }
         }
         // Prepare complete button
         setupCompleteButton()
@@ -163,7 +167,9 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
             completed = false
         }
 
-        task = Task(title: title, limit: limit, completed: completed)
+        let detailDescription = taskDescriptionTextView.text
+
+        task = Task(title: title, limit: limit, completed: completed, detailDescription: detailDescription)
     }
     
 
