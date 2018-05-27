@@ -8,13 +8,15 @@
 
 import UIKit
 
-class TaskViewController: UIViewController, UITextFieldDelegate {
+class TaskViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     //MARK: Propeties
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var limitTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var taskDescriptionTextView: UITextView!
+    @IBOutlet weak var taskDescriptionTextViewPlaceholder: UILabel!
 
     var datePicker = UIDatePicker()
     var toolBar = UIToolbar()
@@ -30,6 +32,7 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         titleTextField.delegate = self
         limitTextField.delegate = self
+        taskDescriptionTextView.delegate = self
 
         // Prepare for task limit field
         setupDateFormatter()
@@ -43,6 +46,10 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         if let task = task {
             titleTextField.text = task.title
             limitTextField.text = dateFormatter.string(for: task.limit)
+            if let detailDescription = task.detailDescription {
+                taskDescriptionTextViewPlaceholder.isHidden = true
+                taskDescriptionTextView.text = detailDescription
+            }
         }
         // Prepare complete button
         setupCompleteButton()
@@ -125,6 +132,23 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
         saveButton.isEnabled = !title.isEmpty
     }
 
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        taskDescriptionTextViewPlaceholder.isHidden = true
+        return true
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if taskDescriptionTextView.text.isEmpty {
+            taskDescriptionTextViewPlaceholder.isHidden = false
+        }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if taskDescriptionTextView.isFirstResponder {
+            taskDescriptionTextView.resignFirstResponder()
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -149,7 +173,9 @@ class TaskViewController: UIViewController, UITextFieldDelegate {
             completed = false
         }
 
-        task = Task(title: title, limit: limit, completed: completed)
+        let detailDescription = taskDescriptionTextView.text
+
+        task = Task(title: title, limit: limit, completed: completed, detailDescription: detailDescription)
     }
     
 
