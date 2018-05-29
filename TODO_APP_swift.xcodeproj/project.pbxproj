@@ -10,8 +10,8 @@
 		2041137420B42000000F0CD7 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041137320B42000000F0CD7 /* TaskViewController.swift */; };
 		2048E31F20B446A30006E995 /* uiview_first_responder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2048E31E20B446A30006E995 /* uiview_first_responder.swift */; };
 		2048E32120B9E3360006E995 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2048E32020B9E3360006E995 /* Assets.xcassets */; };
-		2048E32320B9E9930006E995 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2048E32220B9E95A0006E995 /* fontawesome-webfont.ttf */; };
-		2048E32620B9F0DC0006E995 /* fa-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2048E32420B9ECAD0006E995 /* fa-regular-400.ttf */; };
+		20638C7E20BD01B6006422F9 /* fa-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20638C7C20BD01B5006422F9 /* fa-regular-400.ttf */; };
+		20638C8320BD0399006422F9 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20638C8220BD0399006422F9 /* fontawesome-webfont.ttf */; };
 		20F78B7320B25E4300BAF916 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F78B7220B25E4300BAF916 /* AppDelegate.swift */; };
 		20F78B7A20B25E4300BAF916 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20F78B7820B25E4300BAF916 /* Main.storyboard */; };
 		20F78B7F20B25E4500BAF916 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20F78B7D20B25E4500BAF916 /* LaunchScreen.storyboard */; };
@@ -43,8 +43,8 @@
 		2041137320B42000000F0CD7 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		2048E31E20B446A30006E995 /* uiview_first_responder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiview_first_responder.swift; sourceTree = "<group>"; };
 		2048E32020B9E3360006E995 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2048E32220B9E95A0006E995 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../../Downloads/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
-		2048E32420B9ECAD0006E995 /* fa-regular-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fa-regular-400.ttf"; path = "../../../Downloads/fa-regular-400.ttf"; sourceTree = "<group>"; };
+		20638C7C20BD01B5006422F9 /* fa-regular-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-regular-400.ttf"; sourceTree = "<group>"; };
+		20638C8220BD0399006422F9 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		20F78B6F20B25E4300BAF916 /* TODO_APP_swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODO_APP_swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F78B7220B25E4300BAF916 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20F78B7920B25E4300BAF916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				20F78B7820B25E4300BAF916 /* Main.storyboard */,
-				2048E32420B9ECAD0006E995 /* fa-regular-400.ttf */,
-				2048E32220B9E95A0006E995 /* fontawesome-webfont.ttf */,
+				20638C7C20BD01B5006422F9 /* fa-regular-400.ttf */,
+				20638C8220BD0399006422F9 /* fontawesome-webfont.ttf */,
 				2048E31E20B446A30006E995 /* uiview_first_responder.swift */,
 				20F78B7220B25E4300BAF916 /* AppDelegate.swift */,
 				20F78BE620B2727900BAF916 /* Task.swift */,
@@ -248,8 +248,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				20F78B7F20B25E4500BAF916 /* LaunchScreen.storyboard in Resources */,
-				2048E32620B9F0DC0006E995 /* fa-regular-400.ttf in Resources */,
-				2048E32320B9E9930006E995 /* fontawesome-webfont.ttf in Resources */,
+				20638C7E20BD01B6006422F9 /* fa-regular-400.ttf in Resources */,
+				20638C8320BD0399006422F9 /* fontawesome-webfont.ttf in Resources */,
 				2048E32120B9E3360006E995 /* Assets.xcassets in Resources */,
 				20F78B7A20B25E4300BAF916 /* Main.storyboard in Resources */,
 			);
