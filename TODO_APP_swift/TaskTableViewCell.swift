@@ -11,18 +11,17 @@ import UIKit
 class TaskTableViewCell: UITableViewCell {
 
     //MARK: Propeties
-    @IBOutlet weak var taskTitle: UILabel!
-    @IBOutlet weak var taskLimit: UILabel!
+    @IBOutlet private weak var taskTitle: UILabel!
+    @IBOutlet private weak var taskLimit: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func prepare(task: Task) {
+        taskTitle.text = task.title
+        taskLimit.text = task.limit.map { dateFormatter.string(from: $0) }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
 }

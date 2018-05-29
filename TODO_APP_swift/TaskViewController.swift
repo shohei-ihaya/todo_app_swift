@@ -162,9 +162,9 @@ class TaskViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         }
 
         let title = titleTextField.text ?? ""
-        var limit: NSDate?
+        var limit: Date?
         if let limitStr = limitTextField.text, !limitStr.isEmpty {
-            limit = dateFormatter.date(from: limitStr)! as NSDate
+            limit = dateFormatter.date(from: limitStr)! as Date
         }
         let completed: Bool
         if completeButton.titleLabel?.font == UIFont(name: "FontAwesome", size: 50) {
