@@ -11,7 +11,7 @@ import UIKit
 class Task: NSObject, NSCoding {
     //MARK: Propeties
     var title: String
-    var limit: NSDate?
+    var limit: Date?
     var completed: Bool
     var detailDescription: String?
 
@@ -28,7 +28,7 @@ class Task: NSObject, NSCoding {
     }
 
     //MARK: Initialization
-    init?(title: String, limit: NSDate?, completed: Bool, detailDescription: String?) {
+    init?(title: String, limit: Date?, completed: Bool, detailDescription: String?) {
         // title must not be empty
         guard !title.isEmpty else {
             return nil
@@ -54,7 +54,7 @@ class Task: NSObject, NSCoding {
             return nil
         }
 
-        let limit = aDecoder.decodeObject(forKey: PropertyKey.limit) as? NSDate
+        let limit = aDecoder.decodeObject(forKey: PropertyKey.limit) as? Date
 
         let completed = aDecoder.decodeBool(forKey: PropertyKey.completed)
 

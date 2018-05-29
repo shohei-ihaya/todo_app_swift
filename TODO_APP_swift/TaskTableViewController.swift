@@ -156,23 +156,8 @@ class TaskTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "TaskTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell else {
-            fatalError("The dequeud cell is not an instance of TaskTableViewCell")
-        }
-
-        let task = tasksForTable[indexPath.row]
-
-        cell.taskTitle.text = task.title
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        if let limit = task.limit {
-            cell.taskLimit.text = dateFormatter.string(from: limit as Date)
-        } else {
-            cell.taskLimit.text = nil
-        }
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
+        cell.prepare(task: tasksForTable[indexPath.row])
         return cell
     }
 
